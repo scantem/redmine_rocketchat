@@ -1,14 +1,13 @@
 require 'redmine'
 
-require_dependency 'redmine_mattermost/listener'
+require_dependency 'redmine_rocketchat/listener'
 
-Redmine::Plugin.register :redmine_mattermost do
-	name 'Redmine Mattermost'
-	author 'AltSol'
-	url 'https://github.com/altsol/redmine_mattermost'
-	author_url 'http://altsol.gr'
-	description 'Mattermost chat integration'
-	version '0.2'
+Redmine::Plugin.register :redmine_rocketchat do
+	name 'Redmine Rocket.chat'
+	author 'Simon Cantem'
+	url 'https://github.com/scantem/redmine_rocketchat'
+	description 'Rocket.chat chat integration'
+	version '0.1'
 
 	requires_redmine :version_or_higher => '2.0.0'
 
@@ -16,9 +15,9 @@ Redmine::Plugin.register :redmine_mattermost do
 		:default => {
 			'callback_url' => 'http://example.com/callback/',
 			'channel' => nil,
-			'icon' => 'https://raw.githubusercontent.com/altsol/redmine_mattermost/assets/icon.png',
+			'icon' => 'https://raw.githubusercontent.com/scantem/redmine_rocketchat/assets/icon.png',
 			'username' => 'redmine',
 			'display_watchers' => 'no'
 		},
-		:partial => 'settings/mattermost_settings'
+		:partial => 'settings/rocketchat_settings'
 end
