@@ -1,6 +1,7 @@
 require 'redmine'
 
 require_dependency 'redmine_rocketchat/listener'
+require_dependency 'redmine_rocketchat/mail_handler_patch'
 
 Redmine::Plugin.register :redmine_rocketchat do
 	name 'Redmine Rocket.chat'
