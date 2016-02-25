@@ -10,31 +10,30 @@ class RocketchatListener < Redmine::Hook::Listener
 		return unless channel and url
 		return if issue.is_private?
 
-		msg = "[#{escape issue.project}] #{escape issue.author} created <#{object_url issue}|#{escape issue}>#{mentions issue.description if Setting.plugin_redmine_rocketchat[:new_include_details] == '1'}"
+		msg = "[#{escape issue.project}] #{escape issue.author} created <#{object_url issue}|#{escape issue}>#{mentions issue.description if Setting.plugin_redmine_rocketchat[:auto_mentions] == '1'}"
 
 		attachment = {}
-		if Setting.plugin_redmine_rocketchat[:new_include_details] == '1'
-			attachment[:text] = escape issue.description if issue.description
-			attachment[:fields] = [{
-				:title => I18n.t("field_status"),
-				:value => escape(issue.status.to_s),
-				:short => true
-			}, {
-				:title => I18n.t("field_priority"),
-				:value => escape(issue.priority.to_s),
-				:short => true
-			}, {
-				:title => I18n.t("field_assigned_to"),
-				:value => escape(issue.assigned_to.to_s),
-				:short => true
-			}]
+		
+		attachment[:text] = escape issue.description if issue.description if Setting.plugin_redmine_rocketchat[:new_include_description] == '1'
+		attachment[:fields] = [{
+			:title => I18n.t("field_status"),
+			:value => escape(issue.status.to_s),
+			:short => true
+		}, {
+			:title => I18n.t("field_priority"),
+			:value => escape(issue.priority.to_s),
+			:short => true
+		}, {
+			:title => I18n.t("field_assigned_to"),
+			:value => escape(issue.assigned_to.to_s),
+			:short => true
+		}]
 
-			attachment[:fields] << {
-				:title => I18n.t("field_watcher"),
-				:value => escape(issue.watcher_users.join(', ')),
-				:short => true
-			} if Setting.plugin_redmine_rocketchat[:display_watchers] == 'yes'
-		end
+		attachment[:fields] << {
+			:title => I18n.t("field_watcher"),
+			:value => escape(issue.watcher_users.join(', ')),
+			:short => true
+		} if Setting.plugin_redmine_rocketchat[:display_watchers] == 'yes'
 
 		speak msg, channel, attachment, url
 	end
@@ -49,13 +48,12 @@ class RocketchatListener < Redmine::Hook::Listener
 		return unless channel and url and Setting.plugin_redmine_rocketchat[:post_updates] == '1'
 		return if issue.is_private?
 
-		msg = "[#{escape issue.project}] #{escape journal.user.to_s} updated <#{object_url issue}|#{escape issue}>#{mentions journal.notes if Setting.plugin_redmine_rocketchat[:updated_include_details] == '1'}"
+		msg = "[#{escape issue.project}] #{escape journal.user.to_s} updated <#{object_url issue}|#{escape issue}>#{mentions journal.notes if Setting.plugin_redmine_rocketchat[:auto_mentions] == '1'}"
 
 		attachment = {}
-		if Setting.plugin_redmine_rocketchat[:updated_include_details] == '1'
-			attachment[:text] = escape journal.notes if journal.notes
-			attachment[:fields] = journal.details.map { |d| detail_to_field d }
-		end
+		
+		attachment[:text] = escape journal.notes if journal.notes if Setting.plugin_redmine_rocketchat[:updated_include_description] == '1'
+		attachment[:fields] = journal.details.map { |d| detail_to_field d }
 
 		speak msg, channel, attachment, url
 	end

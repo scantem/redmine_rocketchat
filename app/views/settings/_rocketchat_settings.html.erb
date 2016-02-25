@@ -37,8 +37,13 @@
 </p>
 
 <p>
-	<label for="settings_new_include_details">Details in New Issue?</label>
-	<input type="checkbox" id="settings_new_include_details" value="1" name="settings[new_include_details]" <%= settings['new_include_details'] == '1' ? 'checked="checked"' : '' %> />
+	<label for="settings_auto_mentions">Convert names to "mentions"</label>
+	<input type="checkbox" id="settings_auto_mentions" value="1" name="settings[auto_mentions]" <%= settings['auto_mentions'] == '1' ? 'checked="checked"' : '' %> />
+</p>
+
+<p>
+	<label for="settings_new_include_description">Description in New Issue?</label>
+	<input type="checkbox" id="settings_new_include_description" value="1" name="settings[new_include_description]" <%= settings['new_include_description'] == '1' ? 'checked="checked"' : '' %> />
 </p>
 
 <p>
@@ -47,7 +52,7 @@
 </p>
 
 <p>
-	<label for="settings_updated_include_details">Details in Issue Updates?</label>
-	<input type="checkbox" id="settings_updated_include_details" value="1" name="settings[updated_include_details]" <%= settings['updated_include_details'] == '1' ? 'checked="checked"' : '' %> />
+	<label for="settings_updated_include_description">Description in Issue Updates?</label>
+	<input type="checkbox" id="settings_updated_include_description" value="1" name="settings[updated_include_description]" <%= settings['updated_include_description'] == '1' ? 'checked="checked"' : '' %> />
 </p>
 
