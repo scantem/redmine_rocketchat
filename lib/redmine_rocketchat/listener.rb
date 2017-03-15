@@ -115,8 +115,8 @@ class RocketchatListener < Redmine::Hook::Listener
 			:link_names => 1,
 		}
 
-		params[:username] = username if username
-		params[:channel] = channel if channel
+		# params[:username] = username if username
+		# params[:channel] = channel if channel
 
 		params[:attachments] = [attachment] if attachment
 
@@ -131,7 +131,7 @@ class RocketchatListener < Redmine::Hook::Listener
 		begin
 			client = HTTPClient.new
 			client.ssl_config.cert_store.set_default_paths
-			client.ssl_config.ssl_version = "SSLv23"
+			# client.ssl_config.ssl_version = "SSLv23"
 			client.post_async url, {:payload => params.to_json}
 		rescue
 			# Bury exception if connection error
