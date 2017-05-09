@@ -47,9 +47,11 @@ For more information, see http://www.redmine.org/projects/redmine/wiki/Plugins (
 
 Step 1: Create an Incoming Webhook in Rocket.chat (Administration > Integrations > NEW INTEGRATION > Incoming Webhook).
 
-![step1](https://raw.githubusercontent.com/scantem/redmine_rocketchat/assets/step1.png)
+![step1a](https://cloud.githubusercontent.com/assets/2335362/23932036/4dc6e81c-0968-11e7-8ac9-1decbfad2b9b.png)
 
-Note the URL of the webhook.
+Note the URL of the webhook once it has been created:
+
+![step1b](https://cloud.githubusercontent.com/assets/2335362/23932037/4dc6e894-0968-11e7-9ba6-ac2119383364.png)
 
 Step 2: Install this Redmine plugin for Rocket.chat.
 
