@@ -3,7 +3,9 @@
 This plugin posts updates to issues in your Redmine installation to a Rocket.chat
 channel.
 
-Redmine Supported versions: 2.0.x - 3.2.x.
+Redmine Supported versions: 2.0.x - 3.3.x.
+
+Rocket.chat Supported versions: 0.53.0
 
 ## Screenshot
 
@@ -29,24 +31,31 @@ Incoming WebHook integration in your Rocket.chat account (see also the next two 
 ## Customized Routing
 
 You can also route messages to different channels on a per-project basis. To
-do this, create a project custom field (Administration > Custom fields > Project)
-named `Rocketchat Channel`. If no custom channel is defined for a project, the parent
+do this, create 2 project custom fields (Administration > Custom fields > Project)
+named `Rocketchat Channel`and Rocketchat URL. If no custom channel is defined for a project, the parent
 project will be checked (or the default will be used). To prevent all notifications
 from being sent for a project, set the custom channel to `-`.
+
+Actually with version 0.53.0 of Rocket.chat, only the Rocketchat URL is used.  The channel is
+defined in the webhook setup for that URL.  The `Rocketchat Channel` configuration is left
+in the instructions below for reference to past versions of Rocket.chat that may have used
+this parameter.
 
 For more information, see http://www.redmine.org/projects/redmine/wiki/Plugins (see also next section for an easy configuration demonstration). 
 
 ## Screenshot Guided Configuration
 
-Step 1: Create an Incoming Webhook in Rocket.chat (Account Settings > Integrations > Incoming Webhooks).
+Step 1: Create an Incoming Webhook in Rocket.chat (Administration > Integrations > NEW INTEGRATION > Incoming Webhook).
 
 ![step1](https://raw.githubusercontent.com/scantem/redmine_rocketchat/assets/step1.png)
+
+Note the URL of the webhook.
 
 Step 2: Install this Redmine plugin for Rocket.chat.
 
 ![step2](https://raw.githubusercontent.com/scantem/redmine_rocketchat/assets/step2.png)
 
-Step 3: Configure this Redmine plugin for Rocket.chat. For per-project customized routing, leave the `Rocket.chat Channel` field empty and follow the next steps, otherwise all Redmine projects will post to the same Rocket.chat channel. Be careful when filling the channel field, you need to input the channel's handle, not the display name visible to users. You can find each channel's handle by going inside the channel and click the down-arrow and selecting view info.
+Step 3: Configure this Redmine plugin for Rocket.chat. For per-project customized routing, leave the `Rocket.chat URL` and `Rocket.chat Channel` fields empty and follow the next steps, otherwise all Redmine projects will post to the same Rocket.chat channel. Be careful when filling the channel field, you need to input the channel's handle, not the display name visible to users. You can find each channel's handle by going inside the channel and click the down-arrow and selecting view info.
 
 ![step3](https://raw.githubusercontent.com/scantem/redmine_rocketchat/assets/step3.png)
 
@@ -55,7 +64,9 @@ Step 4: For per-project customized routing, first create the project custom fiel
 ![step4a](https://raw.githubusercontent.com/scantem/redmine_rocketchat/assets/step4a.png)
 ![step4b](https://raw.githubusercontent.com/scantem/redmine_rocketchat/assets/step4b.png)
 
-Step 5: For per-project customized routing, configure the Rocket.chat channel handle inside your Redmine project.
+These fields need to be called `Rocketchat URL` and `Rocketchat Channel`.
+
+Step 5: For per-project customized routing, configure the Rocketchat URL and Rocketchat Channel handles inside your Redmine project.
 
 ![step5](https://raw.githubusercontent.com/scantem/redmine_rocketchat/assets/step5.png)
 
