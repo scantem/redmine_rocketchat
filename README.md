@@ -1,3 +1,5 @@
+*This is no longer maintained. I've 1) moved to Mattermost due to connectivity problems with Rocket.chat and 2) I'm now using: http://github.com/alphanodes/redmine_messenger which works with both Rocket.chat & Mattermost (& Slack)*
+
 # Rocket.chat chat plugin for Redmine
 
 This plugin posts updates to issues in your Redmine installation to a Rocket.chat
